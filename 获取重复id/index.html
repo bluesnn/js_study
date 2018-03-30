@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <title>Document</title>
+  <!-- author: blue -->
+  <meta charset="UTF-8">
+</head>
+
+<body>
+  <div id="box1"></div>
+  <div id="box2"></div>
+  <div id="box3"></div>
+  <div id="box3"></div>
+  <div id="box3"></div>
+  <script>
+    let allId = document.getElementsByTagName('*'),
+      res = [];
+    for (let i = 0; i < allId.length; i++) {
+      let item = allId[i];
+      item.id === 'box3' ? res.push(item) : null;
+      // if (item.id === 'box3') {
+      //   res.push(item)
+      // } else {
+      //   null
+      // }
+    }
+    console.log(res)
+  </script>
+</body>
+
+</html>

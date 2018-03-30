@@ -49,15 +49,32 @@
 // document.write(JSON.stringify(queryUrl('https://www.baidu.com/s?wd=node&rsv_spt=1&issp=1')))
 
 
-// 方案三
-String.prototype.myQueryUrl = function myQueryUrl() {
+function queryUrl(url) {
   let obj = {};
-  let reg = /([^=?&]+) = ([^=?&]+)/g;
-  this.replace(reg, function () {
-    let arg = arguments;
-    obj[arg[1]] = arg[2];
+  let newUrl = url.substring(url.indexOf('?') + 1).split('&');
+  if (url.indexOf('?') === -1) {
+    return obj 
+  }
+  newUrl.forEach(item => {
+    arr = item.split('=');
+    obj[arr[0]] = arr[1];
   });
   return obj;
+  console.log(obj);
 }
-let str = 'https://www.baidu.com/s?wd=node&rsv_spt=1&issp=1';
-console.log(str.myQueryUrl());
+queryUrl('https://www.baidu.com/s?wd=node&rsv_spt=1&issp=1');
+console.log(queryUrl('https://www.baidu.com/s?wd=node&rsv_spt=1&issp=1'));
+
+
+// 方案三
+// String.prototype.myQueryUrl = function myQueryUrl() {
+//   let obj = {};
+//   let reg = /([^=?&]+) = ([^=?&]+)/g;
+//   this.replace(reg, function () {
+//     let arg = arguments;
+//     obj[arg[1]] = arg[2];
+//   });
+//   return obj;
+// }
+// let str = 'https://www.baidu.com/s?wd=node&rsv_spt=1&issp=1';
+// console.log(str.myQueryUrl());

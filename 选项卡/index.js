@@ -64,15 +64,36 @@ let tab = document.getElementById('app'),
 //   }
 // }
 
-let previousIndex = 0;
+// let previousIndex = 0;
+// for (let i = 0; i < oList.length; i++) {
+//   oList[i].currentIndex = i;
+//   oList[i].onclick = function () {
+//     if (previousIndex === this.currentIndex) {
+//       return;
+//     }
+//     oList[previousIndex].className = oDiv[previousIndex].className = '';
+//     this.className = oDiv[this.currentIndex].className = 'active';
+//     previousIndex = this.currentIndex;
+//   }
+// }
+
+
+
+
+
+
+
+let init = 0;
 for (let i = 0; i < oList.length; i++) {
-  oList[i].currentIndex = i;
-  oList[i].onclick = function () {
-    if (previousIndex === this.currentIndex) {
-      return;
+  // oList[i].myIndex = i;
+  oList[i].onclick = function(){
+    if (init === i) {
+      return
     }
-    oList[previousIndex].className = oDiv[previousIndex].className = '';
-    this.className = oDiv[this.currentIndex].className = 'active';
-    previousIndex = this.currentIndex;
+    oList[init].className = oDiv[init].className = '';
+    this.className = oDiv[i].className = 'active';
+    init = i;
   }
 }
+
+
